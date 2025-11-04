@@ -1,7 +1,12 @@
 import { Card } from "@/components/ui/card";
 import { Code2, Database, Brain, TrendingUp } from "lucide-react";
+import { useInView } from "react-intersection-observer";
 
 const About = () => {
+  const { ref, inView } = useInView({
+    threshold: 0.2,
+    triggerOnce: true
+  });
   const skills = [
     {
       icon: <Code2 className="w-8 h-8" />,
@@ -27,13 +32,13 @@ const About = () => {
 
   return (
     <section id="about" className="py-24 px-4 relative">
-      <div className="container mx-auto max-w-6xl">
-        <h2 className="text-5xl md:text-6xl font-black mb-16 text-center">
+      <div ref={ref} className="container mx-auto max-w-6xl">
+        <h2 className={`text-5xl md:text-6xl font-black mb-16 text-center transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           About <span className="bg-gradient-primary bg-clip-text text-transparent">Me</span>
         </h2>
 
         {/* Glass Card */}
-        <Card className="bg-card/40 backdrop-blur-xl border-2 border-primary/20 p-8 md:p-12 mb-12 shadow-glow-cyan animate-fade-in">
+        <Card className={`bg-card/40 backdrop-blur-xl border-2 border-primary/20 p-8 md:p-12 mb-12 shadow-glow-cyan transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <p className="text-lg md:text-xl text-foreground/90 font-body leading-relaxed mb-6">
             Hey there 👋 I'm <span className="text-primary font-semibold">Bilal</span>, currently working at{" "}
             <span className="text-secondary font-semibold">KisanOne</span>, building scalable backend systems and AI-driven solutions.
@@ -51,8 +56,8 @@ const About = () => {
           {skills.map((skill, index) => (
             <Card 
               key={index}
-              className="bg-card/40 backdrop-blur-xl border-2 border-border hover:border-primary/50 p-6 transition-all duration-300 hover:shadow-glow-cyan hover:-translate-y-2 animate-fade-in-up group"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className={`bg-card/40 backdrop-blur-xl border-2 border-border hover:border-primary/50 p-6 transition-all duration-500 hover:shadow-glow-cyan hover:-translate-y-2 group ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+              style={{ transitionDelay: `${index * 0.15}s` }}
             >
               <div className="text-primary mb-4 group-hover:scale-110 transition-transform">
                 {skill.icon}

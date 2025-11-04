@@ -1,8 +1,13 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
+import { useInView } from "react-intersection-observer";
 
 const Projects = () => {
+  const { ref, inView } = useInView({
+    threshold: 0.1,
+    triggerOnce: true
+  });
   const projects = [
     {
       title: "🧠 AI Platform",
@@ -26,8 +31,8 @@ const Projects = () => {
 
   return (
     <section id="projects" className="py-24 px-4 relative">
-      <div className="container mx-auto max-w-6xl">
-        <h2 className="text-5xl md:text-6xl font-black mb-16 text-center">
+      <div ref={ref} className="container mx-auto max-w-6xl">
+        <h2 className={`text-5xl md:text-6xl font-black mb-16 text-center transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           Featured <span className="bg-gradient-primary bg-clip-text text-transparent">Projects</span>
         </h2>
 
@@ -35,8 +40,8 @@ const Projects = () => {
           {projects.map((project, index) => (
             <Card 
               key={index}
-              className="bg-card/40 backdrop-blur-xl border-2 border-border hover:border-primary/50 p-8 transition-all duration-300 hover:shadow-glow-blue hover:-translate-y-2 animate-fade-in-up group"
-              style={{ animationDelay: `${index * 0.15}s` }}
+              className={`bg-card/40 backdrop-blur-xl border-2 border-border hover:border-primary/50 p-8 transition-all duration-500 hover:shadow-glow-blue hover:-translate-y-2 group ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+              style={{ transitionDelay: `${index * 0.2}s` }}
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg`}></div>
               
