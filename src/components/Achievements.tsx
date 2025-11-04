@@ -1,15 +1,25 @@
 import { Card } from "@/components/ui/card";
 import { Award, Trophy } from "lucide-react";
+import { useInView } from "react-intersection-observer";
+import Scene3DVariant from "./Scene3DVariant";
 
 const Achievements = () => {
+  const { ref, inView } = useInView({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
   return (
-    <section id="achievements" className="py-24 px-4 relative">
-      <div className="container mx-auto max-w-4xl">
-        <h2 className="text-5xl md:text-6xl font-black mb-16 text-center">
+    <section id="achievements" className="py-24 px-4 relative overflow-hidden">
+      {/* 3D Background */}
+      <Scene3DVariant />
+      
+      <div ref={ref} className="container mx-auto max-w-4xl relative z-10">
+        <h2 className={`text-5xl md:text-6xl font-black mb-16 text-center transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <span className="bg-gradient-primary bg-clip-text text-transparent">Achievements</span>
         </h2>
 
-        <Card className="bg-card/40 backdrop-blur-xl border-2 border-primary/20 p-8 md:p-12 shadow-glow-purple hover:shadow-glow-cyan transition-all duration-300 animate-fade-in group">
+        <Card className={`bg-card/60 backdrop-blur-xl border-2 border-primary/20 p-8 md:p-12 shadow-glow-purple hover:shadow-glow-cyan transition-all duration-500 group ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="flex items-start gap-6">
             <div className="p-4 bg-gradient-primary rounded-full group-hover:scale-110 transition-transform">
               <Trophy className="w-8 h-8 text-primary-foreground" />

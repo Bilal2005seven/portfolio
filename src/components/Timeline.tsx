@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Briefcase, GraduationCap, Code } from "lucide-react";
 import { useInView } from "react-intersection-observer";
+import Scene3DVariant from "./Scene3DVariant";
 
 const Timeline = () => {
   const timelineData = [
@@ -31,8 +32,11 @@ const Timeline = () => {
   ];
 
   return (
-    <section id="timeline" className="py-24 px-4 relative">
-      <div className="container mx-auto max-w-4xl">
+    <section id="timeline" className="py-24 px-4 relative overflow-hidden">
+      {/* 3D Background */}
+      <Scene3DVariant />
+      
+      <div className="container mx-auto max-w-4xl relative z-10">
         <h2 className="text-5xl md:text-6xl font-black mb-16 text-center">
           My <span className="bg-gradient-primary bg-clip-text text-transparent">Journey</span>
         </h2>

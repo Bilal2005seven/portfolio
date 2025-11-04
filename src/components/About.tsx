@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Code2, Database, Brain, TrendingUp } from "lucide-react";
 import { useInView } from "react-intersection-observer";
+import Scene3DVariant from "./Scene3DVariant";
 
 const About = () => {
   const { ref, inView } = useInView({
@@ -31,8 +32,11 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-24 px-4 relative">
-      <div ref={ref} className="container mx-auto max-w-6xl">
+    <section id="about" className="py-24 px-4 relative overflow-hidden">
+      {/* 3D Background */}
+      <Scene3DVariant />
+      
+      <div ref={ref} className="container mx-auto max-w-6xl relative z-10">
         <h2 className={`text-5xl md:text-6xl font-black mb-16 text-center transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           About <span className="bg-gradient-primary bg-clip-text text-transparent">Me</span>
         </h2>
