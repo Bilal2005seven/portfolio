@@ -29,7 +29,7 @@ const Hero = () => {
         <div className={`transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
           <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tight">
             <span className="bg-gradient-primary bg-clip-text text-transparent">
-              Bilal
+              Bilal Ahmed
             </span>
           </h1>
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-secondary animate-fade-in">
@@ -50,14 +50,7 @@ const Hero = () => {
               View Projects
               <ArrowDown className="ml-2 group-hover:translate-y-1 transition-transform" />
             </Button>
-            <Button 
-              variant="glow" 
-              size="lg"
-              onClick={() => window.open('#', '_blank')}
-            >
-              <Download className="mr-2" />
-              Download Resume
-            </Button>
+            
             <Button 
               variant="glow" 
               size="lg"

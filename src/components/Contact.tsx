@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, Linkedin, Github, Twitter } from "lucide-react";
+import { Mail, Linkedin, Github, Twitter, MessageCircle } from "lucide-react";
 import { useInView } from "react-intersection-observer";
 import ContactForm from "./ContactForm";
 import Scene3DVariant from "./Scene3DVariant";
@@ -14,13 +14,13 @@ const Contact = () => {
     {
       icon: <Github className="w-6 h-6" />,
       label: "GitHub",
-      href: "https://github.com",
+      href: "https://github.com/Bilal2005seven",
       color: "hover:text-foreground"
     },
     {
       icon: <Linkedin className="w-6 h-6" />,
       label: "LinkedIn",
-      href: "https://linkedin.com",
+      href: "https://www.linkedin.com/in/bilal-ahmed-170953334/",
       color: "hover:text-secondary"
     },
     {
@@ -58,14 +58,17 @@ const Contact = () => {
               </p>
 
               {/* Direct Email */}
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 text-primary">
-                  <Mail className="w-5 h-5" />
-                  <a href="mailto:bilal@example.com" className="hover:text-secondary transition-colors">
-                    bilal@example.com
-                  </a>
-                </div>
-              </div>
+              <div className="flex items-center gap-3 text-primary">
+        <MessageCircle className="w-5 h-5 text-green-500" />
+        <a
+          href="https://wa.me/917067163019?text=Hello%20Bilal%2C%20I%20visited%20your%20website%20and%20wanted%20to%20connect!"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-green-600 transition-colors"
+        >
+          Chat on WhatsApp
+        </a>
+      </div>
             </Card>
 
             {/* Social Links */}
